@@ -1,0 +1,43 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build output
+dist/
+build/
+
+# Database
+*.sqlite
+*.sqlite3
+
+# Misc
+*.tgz
+
+# VSCode
+.vscode/
+
+# Local environment
+.venv/
+
+# Coverage
+coverage/
+
+# Parcel
+.cache/
+
+# Nodemon
+pids
