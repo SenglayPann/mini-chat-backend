@@ -1,20 +1,38 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('./db');
+const { DataTypes, Model } = require('sequelize');
+const sequelize = require('../config/db');
 
 const Message = sequelize.define('Message', {
-  user: {
-    type: DataTypes.STRING,
-    allowNull: false,
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true,
   },
-  text: {
+  content: {
     type: DataTypes.TEXT,
     allowNull: false,
   },
-  time: {
-    type: DataTypes.DATE,
+  userId: {
+    type: DataTypes.UUID,
     allowNull: false,
-    defaultValue: DataTypes.NOW,
+    references: {
+      model: 'Users',
+      key: 'id',
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
   },
+  chatRoomId: {
+    type: DataTypes.UUID,
+    allowNull: false,
+    references: {
+      model: 'ChatRooms',
+      key: 'id',
+    },
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  },
+}, {
+  timestamps: true,
 });
 
 module.exports = Message;

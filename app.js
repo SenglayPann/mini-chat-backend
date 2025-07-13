@@ -1,12 +1,11 @@
-// Sync database
-const sequelize = require('./models/db');
-
-// Basic Express.js app with security best practices
 const express = require('express');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const cors = require('cors');
+const messageRoutes = require('./routes/messageRoutes');
+const chatRoomRoutes = require('./routes/chatRoomRoutes');
 
+// Basic Express.js app with security best practices
 const app = express();
 
 // Set security HTTP headers
@@ -31,8 +30,9 @@ app.use(express.json({ limit: '10kb' }));
 // e.g., use express-validator for input validation/sanitization
 
 // Message routes
-const messageRoutes = require('./routes/messageRoutes');
-app.use('/api/messages', messageRoutes);
+app.use('/api/v1/messages', messageRoutes);
+// Chat room routes
+app.use('/api/v1/chatrooms', chatRoomRoutes);
 
 // Root endpoint
 app.get('/', (req, res) => {

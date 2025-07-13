@@ -3,7 +3,9 @@ const messageController = require('../controllers/messageController');
 
 const router = express.Router();
 
-router.get('/', messageController.getMessages);
-router.post('/', messageController.postMessage);
+router
+  .route('/')
+  .get(messageController.getMessages)
+  .post(messageController.postMessage);
 
 module.exports = router;
