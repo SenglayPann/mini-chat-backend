@@ -27,3 +27,8 @@ exports.signUp = catchAsync(async (req, res) => {
   creatSendToken(newUser, 201, req, res);
 });
 
+exports.login = catchAsync(async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = await User.findOne()
+})

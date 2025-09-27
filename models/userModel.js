@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
+const useBcrypt = require('sequelize-bcrypt');
 
 const User = sequelize.define('User', {
   id: {
@@ -29,3 +30,10 @@ const User = sequelize.define('User', {
 });
 
 module.exports = User;
+
+// encrypt password
+useBcrypt(User, {
+  field: "password",
+  rounds: 12,
+  compare: 'authenticate'
+});
